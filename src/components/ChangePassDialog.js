@@ -44,7 +44,8 @@ const ChangePassDialog = ({ open, setOpen }) => {
     fetch(`http://localhost:80/api/v1/users/${currentUser.username}`, options)
       .then((response) => response.json())
       .then((data) => {
-        if (data && data.status && data.status === "status") {
+        if (data && data.status && data.status === "success") {
+          setPasswordIncorrect(false)
           setCurrentUser({ user: data.user })
           setOpen(false)
         } else {
@@ -108,7 +109,7 @@ const ChangePassDialog = ({ open, setOpen }) => {
             <Button
               onClick={handlePasswordChange}
               color="primary"
-              disabled={isMismatched || isPasswordIncorrect}
+              disabled={isMismatched}
             >
               Save changes
             </Button>

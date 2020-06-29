@@ -9,7 +9,7 @@ const App = () => {
     {},
     () => {
       const stored = JSON.parse(localStorage.getItem("currentUser"))
-      return Object.keys(stored).length !== 0 ? stored : {}
+      return stored ? stored : {}
     }
   )
 
@@ -22,7 +22,7 @@ const App = () => {
     "",
     () => {
       const stored = localStorage.getItem("userToken")
-      return stored !== "null" || stored !== null ? stored : ""
+      return stored ? stored : ""
     }
   )
 
